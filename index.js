@@ -31,19 +31,15 @@ async function main() {
   const minNumber = await findMinNumber(outputFileName)
   const arithmeticMean = await findArithmeticMean(outputFileName)
   const median = await findMedian(outputFileName)
-  const maxAscSequenceLength = await findLongestAscendingSequence(
-    outputFileName
-  )
-  const maxDescSequenceLength = await findLongestDescendingSequence(
-    outputFileName
-  )
+  const maxAscSequenc = await findLongestAscendingSequence(outputFileName)
+  const maxDescSequenc = await findLongestDescendingSequence(outputFileName)
 
   logger('Biggest number - ', maxNumber)
   logger('Smallest number - ', minNumber)
   logger('Arithmetic mean - ', arithmeticMean)
   logger('Median - ', median)
-  logger('Longest ascending sequence length ', maxAscSequenceLength)
-  logger('Longest descending sequence length ', maxDescSequenceLength)
+  logger('Longest ascending sequence - ', maxAscSequenc)
+  logger('Longest descending sequence - ', maxDescSequenc)
 }
 
 main().catch((error) => {

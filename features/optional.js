@@ -2,8 +2,9 @@ const { createReadStream } = require('fs')
 const { createInterface } = require('readline')
 
 async function findLongestDescendingSequence(filePath) {
-  let longestDescSequenceLength = 1
-  let currentSequenceLength = 1
+  let longestDescSequence = []
+  let currentSequence = []
+  let prevNumber = null
 
   const fileStream = createReadStream(filePath)
   const rl = createInterface({
@@ -11,29 +12,28 @@ async function findLongestDescendingSequence(filePath) {
     crlfDelay: Infinity,
   })
 
-  let prevNumber = null
   for await (const line of rl) {
     const current = parseInt(line.trim())
     if (prevNumber !== null) {
       if (current < prevNumber) {
-        currentSequenceLength++
-        longestDescSequenceLength = Math.max(
-          longestDescSequenceLength,
-          currentSequenceLength
-        )
+        currentSequence.push(current)
       } else {
-        currentSequenceLength = 1
+        if (currentSequence.length > longestDescSequence.length) {
+          longestDescSequence = currentSequence.slice()
+        }
+        currentSequence = [current]
       }
     }
     prevNumber = current
   }
 
-  return longestDescSequenceLength
+  return longestDescSequence
 }
 
 async function findLongestAscendingSequence(filePath) {
-  let longestAscSequenceLength = 1
-  let currentSequenceLength = 1
+  let longestAscSequence = []
+  let currentSequence = []
+  let prevNumber = null
 
   const fileStream = createReadStream(filePath)
   const rl = createInterface({
@@ -41,24 +41,22 @@ async function findLongestAscendingSequence(filePath) {
     crlfDelay: Infinity,
   })
 
-  let prevNumber = null
   for await (const line of rl) {
     const current = parseInt(line.trim())
     if (prevNumber !== null) {
       if (current > prevNumber) {
-        currentSequenceLength++
-        longestAscSequenceLength = Math.max(
-          longestAscSequenceLength,
-          currentSequenceLength
-        )
+        currentSequence.push(current)
       } else {
-        currentSequenceLength = 1
+        if (currentSequence.length > longestAscSequence.length) {
+          longestAscSequence = currentSequence.slice()
+        }
+        currentSequence = [current]
       }
     }
     prevNumber = current
   }
 
-  return longestAscSequenceLength
+  return longestAscSequence
 }
 
 module.exports = {
