@@ -5,8 +5,9 @@
 ### Usage:
 
 1. git clone https://github.com/vladjsp/porta-task-bad-2024.git
-2. npm install
-3. npm run start
+2. navigate into created folder
+3. npm install
+4. npm run start
 
 The result will be printed in the terminal
 
