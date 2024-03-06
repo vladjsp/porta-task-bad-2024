@@ -4,7 +4,7 @@ const extractBz2File = require('./utils/archieveHelper')
 const {
   findMaxNumber,
   findMinNumber,
-  calculateSum,
+  findArithmeticMean,
   findMedian,
 } = require('./features/mandatory')
 const {
@@ -29,7 +29,7 @@ async function main() {
 
   const maxNumber = await findMaxNumber(outputFileName)
   const minNumber = await findMinNumber(outputFileName)
-  const fileSum = await calculateSum(outputFileName)
+  const arithmeticMean = await findArithmeticMean(outputFileName)
   const median = await findMedian(outputFileName)
   const maxAscSequenceLength = await findLongestAscendingSequence(
     outputFileName
@@ -40,7 +40,7 @@ async function main() {
 
   logger('Biggest number - ', maxNumber)
   logger('Smallest number - ', minNumber)
-  logger('Sum of all numbers ', fileSum)
+  logger('Arithmetic mean - ', arithmeticMean)
   logger('Median - ', median)
   logger('Longest ascending sequence length ', maxAscSequenceLength)
   logger('Longest descending sequence length ', maxDescSequenceLength)
