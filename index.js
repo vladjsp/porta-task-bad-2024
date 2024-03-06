@@ -6,11 +6,11 @@ const {
   findMinNumber,
   calculateSum,
   findMedian,
-} = require('./utils/mandatory')
+} = require('./features/mandatory')
 const {
   findLongestAscendingSequence,
   findLongestDescendingSequence,
-} = require('./utils/optional')
+} = require('./features/optional')
 const logger = require('./utils/logger')
 const config = require('./config/config')
 
